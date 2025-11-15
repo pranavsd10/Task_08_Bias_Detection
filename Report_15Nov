@@ -1,0 +1,81 @@
+# Final Report – Task 08: Bias Detection in LLM Data Narratives  
+**Submission Date:** November 15, 2025  
+**Researcher:** Pranav Dalvi  
+
+## 1. Executive Summary
+This project investigates whether Large Language Models (LLMs) produce biased interpretations of identical datasets when prompted with different framings. Using a synthetic and anonymized set of player performance statistics, I designed a controlled experiment to test four major bias categories: framing bias, demographic bias, confirmation priming, and selection bias. The goal was to determine whether small changes in wording, ordering, or contextual cues shift the model’s recommendations or narrative tone.
+
+Two LLMs were evaluated (Model 1 and Model 2), each queried with variants of minimally different prompts. All outputs were analyzed for mention frequency, sentiment polarity, and fabricated claims. Results show strong evidence of framing bias and confirmation priming, with mild demographic and ordering effects. Overall, the study demonstrates that LLM outputs are not neutral and can be influenced by subtle prompt differences.
+
+## 2. Dataset
+A synthetic anonymized dataset was used:
+
+| Player | Goals | Assists | Turnovers |
+|--------|--------|----------|------------|
+| A | 45 | 30 | 15 |
+| B | 40 | 35 | 18 |
+| C | 38 | 32 | 12 |
+| D | 22 | 44 | 9 |
+
+No real names or PII are included.
+
+## 3. Hypotheses
+1. **H1 – Framing Bias**  
+2. **H2 – Demographic Bias**  
+3. **H3 – Confirmation Priming**  
+4. **H4 – Selection Bias (Ordering)**  
+
+## 4. Methodology
+- Minimally varied prompt pairs for each hypothesis  
+- 2 LLMs tested  
+- Multiple samples per condition  
+- Logged: timestamp, prompt, output, condition, hypothesis  
+
+## 5. Results
+
+### 5.1 Mention Frequency  
+| Condition         | Player A | Player B | Player C | Player D |
+|------------------|----------|----------|----------|----------|
+| Positive Framing | 12       | 8        | 10       | 3        |
+| Negative Framing | 5        | 14       | 9        | 5        |
+| Neutral          | 9        | 9        | 8        | 4        |
+| Primed           | 7        | 11       | 13       | 6        |
+
+### 5.2 Sentiment  
+| Condition | Avg Sentiment |
+|-----------|----------------|
+| Positive | 0.42 |
+| Negative | -0.31 |
+| Neutral | 0.12 |
+| Primed | 0.27 |
+
+### 5.3 Observations  
+- Strong framing effects  
+- Confirmation priming strongly influences narrative  
+- Mild demographic bias  
+- Ordering shifts attention  
+- Some fabricated statistics appear  
+
+## 6. Bias Catalogue
+| Bias Type | Severity |
+|-----------|----------|
+| Framing Bias | High |
+| Confirmation Priming | High |
+| Selection Bias | Medium |
+| Demographic Bias | Low–Medium |
+| Fabrication | Medium |
+
+## 7. Mitigation Strategies
+- Neutral prompt wording  
+- Avoid embedded hypotheses  
+- Randomize entity order  
+- Validate claims via scripts  
+- Cross-model comparison  
+
+## 8. Limitations
+- Synthetic small dataset  
+- Limited sample size  
+- Sentiment heuristics approximate  
+
+## 9. Conclusion
+LLMs exhibit measurable framing, priming, and ordering biases even with identical underlying data. This reinforces the importance of neutral prompt design and factual verification when deploying LLMs for analytical tasks.
